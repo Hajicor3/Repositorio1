@@ -32,8 +32,6 @@ public class Program {
 			String dataNascimento= sc.nextLine();
 			System.out.println();
 			
-					
-			
 			pessoas[i] = new Pessoas(id,nome,email,endereco,dataNascimento);
 		}
 		
@@ -43,8 +41,56 @@ public class Program {
 			System.out.println(pessoas[i].toString());
 		}
 		
+		System.out.println();
+		System.out.print("Digite o id do funcionário que terá seus dados atualizados: ");
+		int id = sc.nextInt();
+		
+		for (int i = 0; i<pessoas.length;i++) {
+			if(pessoas[i].getId() == id) {
+				System.out.println(pessoas[i]);
+				
+				System.out.println();
+				System.out.print("Digite o número correspondente ao dado que será atualizado (1-nome, 2-email 3-endereço e 4-nenhum):");
+				int change = sc.nextInt();
+				
+				switch(change) {
+				case 1:
+					System.out.print("Digite o novo nome: ");
+					sc.nextLine();
+					String name = sc.nextLine();
+					pessoas[i].setName(name);
+					break;
+				
+				case 2:
+					System.out.print("Digite o novo email: ");
+					String email = sc.next();
+					pessoas[i].setEmail(email);
+					break;
+					
+				case 3:
+					System.out.print("Digite o novo endereço: ");
+					sc.nextLine();
+					String endereco = sc.nextLine();
+					pessoas[i].setAdress(endereco);
+					break;
+					
+				default:
+					System.out.println("Nenhuma alteração foi feita!");
+					
+				}
+				
+				System.out.println();
+				System.out.println("Lista de pessoas atualiada: ");
+				for (int j = 0; j < pessoas.length; j++) {
+					System.out.println(pessoas[j].toString());
+				}
+			}
+		}
+		
+		
+		
 		sc.close();
 
 	}
-
+	
 }
